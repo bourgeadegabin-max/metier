@@ -218,6 +218,7 @@ function filtrer(f) {
    ============================================================ */
 const PAGES = [
   ["index.html", "Accueil"],
+  ["interactif.html", "Explorer les offres"],
   ["salaires.html", "Ce que ça paie"],
   ["exigences.html", "Ce qu'on vous demande"],
   ["recruteurs.html", "Qui recrute"],

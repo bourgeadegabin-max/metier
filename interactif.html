@@ -1,53 +1,132 @@
 <!doctype html>
 <html lang="fr">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Offres par métier — graphique interactif</title>
-<style>
-:root{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#18212b;background:#f4f6f8;font-synthesis:none}*{box-sizing:border-box}body{margin:0}.wrap{max-width:1280px;margin:0 auto;padding:32px 22px 56px}header{margin-bottom:22px}h1{font-size:clamp(1.7rem,3vw,2.5rem);margin:0 0 8px;letter-spacing:-.03em}.lead{color:#465465;margin:0;line-height:1.55}.source{font-size:.9rem;color:#647184;margin-top:9px}.panel{background:white;border:1px solid #dfe4ea;border-radius:14px;padding:20px 22px;margin:18px 0;box-shadow:0 2px 8px #17212b0a}.panel h2{font-size:1.18rem;margin:0 0 5px}.hint{color:#596778;font-size:.9rem;margin:0 0 16px}.toolbar{display:flex;flex-wrap:wrap;gap:9px;margin:14px 0 0}.button{border:1px solid #b8c3cf;background:#fff;color:#172536;border-radius:8px;padding:9px 13px;font:inherit;font-size:.92rem;cursor:pointer}.button:hover{background:#f1f5f9}.button.primary{background:#174f7b;color:white;border-color:#174f7b}.button.primary:hover{background:#103e62}.chart-scroll{overflow-x:auto}.chart{display:block;width:100%;min-width:680px;height:auto}.chart text{font-family:inherit;fill:#172536}.chart .axis{fill:#687586;font-size:12px}.chart .name{font-size:13px}.chart .count{font-size:12px;font-weight:650}.chart .grid{stroke:#e8edf2;stroke-width:1}.chart .bar{fill:#2474a6}.chart .bar:hover{fill:#e38c32}table{width:100%;border-collapse:collapse}th{text-align:left;font-size:.83rem;color:#516071;padding:9px 8px;border-bottom:1px solid #dce3e9}td{padding:7px 6px;border-bottom:1px solid #edf0f3}td input{width:100%;min-width:80px;border:1px solid #ccd5df;border-radius:6px;padding:8px 9px;font:inherit;font-size:.92rem;background:#fff;color:#18212b}td input:focus{outline:2px solid #7eb9df;border-color:#2474a6}.col-code{width:14%}.col-label{width:56%}.col-value{width:15%}.col-remove{width:15%;text-align:right}.remove{border:0;background:transparent;color:#9c2d2d;cursor:pointer;padding:7px 9px;border-radius:6px;font:inherit}.remove:hover{background:#fff0f0}.table-wrap{overflow-x:auto}.empty{color:#647184;padding:16px 8px}.status{font-size:.86rem;color:#435365;margin:10px 0 0;min-height:1.3em}.footer-note{font-size:.85rem;color:#647184;line-height:1.55;margin:14px 2px}.small{font-size:.83rem;color:#687586}@media(max-width:650px){.wrap{padding:22px 12px 40px}.panel{padding:16px 12px}.col-code{width:19%}.col-label{width:45%}.col-value{width:20%}.col-remove{width:16%}td input{min-width:68px;padding:7px 6px}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explorateur interactif des offres d'emploi du projet métiers du marketing.">
+  <title>Explorer les offres — Le marché de mon métier</title>
+  <link rel="stylesheet" href="assets/commun.css?v=4">
+  <link rel="stylesheet" href="assets/explorateur.css?v=1">
 </head>
 <body>
-<main class="wrap">
-<header>
-<h1>Offres actives par métier</h1>
-<p class="lead">Explore le volume d’offres par code ROME. Modifie les cellules du tableau, ajoute tes propres lignes : le graphique suit tes changements.</p>
-<p class="source" id="source"></p>
-</header>
-<section class="panel" aria-labelledby="chart-heading">
-<h2 id="chart-heading">Graphique</h2>
-<p class="hint">Les barres sont triées par effectif décroissant. Survole une barre pour lire le métier et son effectif.</p>
-<div class="chart-scroll"><svg id="chart" class="chart" role="img" aria-label="Diagramme en barres horizontales des offres par métier"></svg></div>
-<p id="chart-summary" class="small"></p>
-</section>
-<section class="panel" aria-labelledby="table-heading">
-<h2 id="table-heading">Données modifiables</h2>
-<p class="hint">Entre un code, un métier et un nombre entier d’offres. Les modifications sont gardées dans ce navigateur.</p>
-<div class="table-wrap"><table><thead><tr><th class="col-code">Code ROME</th><th class="col-label">Métier</th><th class="col-value">Offres</th><th class="col-remove">Action</th></tr></thead><tbody id="rows"></tbody></table></div>
-<div class="toolbar"><button class="button primary" id="add">＋ Ajouter un métier</button><button class="button" id="export">Télécharger en CSV</button><button class="button" id="reset">Revenir aux données d’origine</button></div>
-<p class="status" id="status" aria-live="polite"></p>
-</section>
-<p class="footer-note">Les valeurs d’origine viennent de <code>data/resume.json</code> (extraction du 2026-09-29). Le fichier source n’est pas modifié. Les changements restent enregistrés localement dans le navigateur sur cet appareil ; utilise le bouton CSV pour exporter ta version.</p>
+<main class="explorer-page">
+  <nav class="nav" aria-label="Navigation principale">
+    <a href="index.html">Accueil</a>
+    <a href="interactif.html" class="ici" aria-current="page">Explorer les offres</a>
+    <a href="salaires.html">Ce que ça paie</a>
+    <a href="exigences.html">Ce qu'on vous demande</a>
+    <a href="recruteurs.html">Qui recrute</a>
+    <a href="mouvement.html">Le marché bouge</a>
+  </nav>
+
+  <header class="hero">
+    <p class="eyebrow">Données d'offres · France Travail</p>
+    <h1>Explorer les offres du marketing</h1>
+    <p class="hero-copy">Parcourez les métiers, les contrats, les salaires et les exigences à partir des annonces collectées par le projet.</p>
+    <p class="source-line" id="source-line" aria-live="polite">Chargement de <code>data/resume.json</code>…</p>
+  </header>
+  <div class="panel error-panel" id="error-panel" role="alert" hidden></div>
+
+  <section class="panel filters-panel" aria-labelledby="filters-heading">
+    <div class="section-heading filters-heading">
+      <div><p class="eyebrow">Affiner la sélection</p><h2 id="filters-heading">Filtres</h2></div>
+      <button class="button button-secondary" id="reset-filters" type="button">Réinitialiser</button>
+    </div>
+    <div class="filter-grid">
+      <label class="field"><span>Métier</span><select id="filter-rome"><option value="">Tous les métiers</option></select></label>
+      <label class="field"><span>Famille de contrat</span><select id="filter-family"><option value="">Toutes les familles</option></select></label>
+      <label class="field"><span>Département</span><select id="filter-department"><option value="">Tous les départements</option></select></label>
+      <label class="field"><span>Expérience demandée</span><select id="filter-experience"><option value="">Toutes les catégories</option></select></label>
+      <fieldset class="field salary-filter">
+        <legend>Salaire minimum annuel brut (`smin`)</legend>
+        <div class="range-fields">
+          <label><span class="sr-only">Minimum en euros</span><input id="filter-salary-min" type="number" min="0" step="1000" inputmode="numeric" placeholder="Minimum €"></label>
+          <span aria-hidden="true">à</span>
+          <label><span class="sr-only">Maximum en euros</span><input id="filter-salary-max" type="number" min="0" step="1000" inputmode="numeric" placeholder="Maximum €"></label>
+        </div>
+        <label class="check-field"><input id="include-missing-salary" type="checkbox"><span>Inclure les offres sans salaire numérique si une fourchette est appliquée</span></label>
+      </fieldset>
+    </div>
+    <p class="filter-count" id="filter-count" aria-live="polite">Les filtres seront disponibles après le chargement.</p>
+  </section>
+
+  <section aria-labelledby="overview-heading">
+    <div class="section-heading overview-heading"><div><p class="eyebrow">Vue d'ensemble</p><h2 id="overview-heading">Les chiffres de la sélection</h2></div></div>
+    <div class="kpi-grid" id="kpi-grid" aria-live="polite">
+      <article class="kpi-card"><span class="kpi-label">Offres sélectionnées</span><strong id="kpi-offers">—</strong><span class="kpi-note">chargement des données</span></article>
+      <article class="kpi-card"><span class="kpi-label">Métier le plus représenté</span><strong id="kpi-top-job">—</strong><span class="kpi-note" id="kpi-top-job-note">calculé sur la sélection</span></article>
+      <article class="kpi-card"><span class="kpi-label">Médiane des minima salariaux</span><strong id="kpi-salary-median">—</strong><span class="kpi-note" id="kpi-salary-note">calculée sur les salaires numériques</span></article>
+      <article class="kpi-card"><span class="kpi-label">Âge médian des annonces</span><strong id="kpi-age-median">—</strong><span class="kpi-note" id="kpi-age-note">calculé sur les dates exploitables</span></article>
+    </div>
+  </section>
+
+  <section aria-labelledby="charts-heading">
+    <div class="section-heading"><div><p class="eyebrow">Comparer</p><h2 id="charts-heading">Répartitions descriptives</h2></div></div>
+    <div class="visual-grid">
+      <article class="panel chart-panel chart-panel-wide">
+        <div class="chart-heading"><div><h3>Offres par métier</h3><p class="chart-note" id="jobs-note">Effectifs et parts dans la sélection filtrée. Cliquez une barre pour filtrer ce métier.</p></div></div>
+        <div class="chart-scroll chart-scroll-tall"><div class="chart-stage chart-stage-jobs"><canvas id="chart-jobs" role="img" aria-label="Offres classées par métier"></canvas></div></div>
+      </article>
+      <article class="panel chart-panel">
+        <div class="chart-heading"><div><h3>Familles de contrat</h3><p class="chart-note">Répartition exclusive selon le recodage du projet ; cliquez une barre pour filtrer.</p></div></div>
+        <div class="chart-stage"><canvas id="chart-contracts" role="img" aria-label="Offres par famille de contrat"></canvas></div>
+      </article>
+      <article class="panel chart-panel">
+        <div class="chart-heading"><div><h3>Minima salariaux annualisés</h3><p class="chart-note">Distribution de `smin`, uniquement pour les offres avec une valeur numérique.</p></div></div>
+        <div class="chart-stage"><canvas id="chart-salaries" role="img" aria-label="Histogramme des minima salariaux annuels"></canvas></div>
+        <p class="chart-summary" id="salary-summary" aria-live="polite"></p>
+      </article>
+      <article class="panel chart-panel">
+        <div class="chart-heading"><div><h3>Expérience demandée</h3><p class="chart-note">Classes du TD1 conservées. Cliquez une barre pour filtrer.</p></div></div>
+        <div class="chart-stage"><canvas id="chart-experience" role="img" aria-label="Offres par catégorie d'expérience demandée"></canvas></div>
+      </article>
+      <article class="panel chart-panel">
+        <div class="chart-heading"><div><h3>Ancienneté des annonces</h3><p class="chart-note">Âge à la date d'extraction, calculé depuis la date de création.</p></div></div>
+        <div class="chart-stage"><canvas id="chart-age" role="img" aria-label="Offres par classe d'ancienneté"></canvas></div>
+        <p class="chart-summary" id="age-summary" aria-live="polite"></p>
+      </article>
+      <article class="panel chart-panel">
+        <div class="chart-heading"><div><h3>Offres par département</h3><p class="chart-note" id="department-note">Les offres sans département restent visibles séparément. Cliquez une barre pour filtrer.</p></div></div>
+        <div class="chart-scroll"><div class="chart-stage chart-stage-departments"><canvas id="chart-departments" role="img" aria-label="Principaux départements selon le nombre d'offres"></canvas></div></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="panel table-panel" aria-labelledby="offers-heading">
+    <div class="section-heading table-heading">
+      <div><p class="eyebrow">Consulter les annonces</p><h2 id="offers-heading">Tableau des offres</h2></div>
+      <label class="search-field"><span>Recherche</span><input id="offer-search" type="search" placeholder="Intitulé, entreprise, lieu…" autocomplete="off"></label>
+    </div>
+    <p class="table-count" id="table-count" aria-live="polite"></p>
+    <div class="table-scroll">
+      <table class="offers-table">
+        <thead><tr>
+          <th scope="col"><button type="button" class="sort-button" data-sort="intitule">Offre <span aria-hidden="true"></span></button></th>
+          <th scope="col"><button type="button" class="sort-button" data-sort="rome">Métier <span aria-hidden="true"></span></button></th>
+          <th scope="col"><button type="button" class="sort-button" data-sort="entreprise">Employeur <span aria-hidden="true"></span></button></th>
+          <th scope="col"><button type="button" class="sort-button" data-sort="dep">Département <span aria-hidden="true"></span></button></th>
+          <th scope="col"><button type="button" class="sort-button" data-sort="family">Contrat <span aria-hidden="true"></span></button></th>
+          <th scope="col"><button type="button" class="sort-button" data-sort="smin">Salaire <span aria-hidden="true"></span></button></th>
+          <th scope="col"><button type="button" class="sort-button" data-sort="experience">Expérience <span aria-hidden="true"></span></button></th>
+          <th scope="col"><button type="button" class="sort-button" data-sort="date">Publication <span aria-hidden="true"></span></button></th>
+        </tr></thead>
+        <tbody id="offers-body"><tr><td colspan="8" class="table-empty">Chargement des offres…</td></tr></tbody>
+      </table>
+    </div>
+    <div class="table-controls">
+      <label class="page-size-field">Lignes par page<select id="page-size"><option>25</option><option>50</option><option>100</option></select></label>
+      <div class="pagination"><button type="button" class="button button-secondary" id="page-prev">Précédent</button><span id="page-info" aria-live="polite">Page —</span><button type="button" class="button button-secondary" id="page-next">Suivant</button></div>
+    </div>
+    <p class="table-footnote">La pagination masque temporairement les autres lignes, sans retirer d'offre du jeu de données. Les valeurs absentes sont indiquées « Non renseigné ».</p>
+  </section>
+
+  <footer class="explorer-footer">
+    <p>Source : <code>data/resume.json</code>. Les graphiques et indicateurs sont recalculés dans le navigateur à partir de la sélection. Les salaires sont des bornes annualisées extraites d'un libellé, pas des rémunérations observées.</p>
+    <p><a href="synthese.md">Consulter la synthèse TD1</a> · <a href="dictionnaire_variables.md">Dictionnaire des variables</a> · <a href="index.html">Retour au site métier</a></p>
+  </footer>
 </main>
-<script>
-const ORIGINAL={"date":"2026-09-29","total":3181,"rows":[{"code":"D1415","label":"Chargé(e) de relation client (CRM)","value":350},{"code":"D1438","label":"Assistant(e) e-commerce","value":32},{"code":"D1506","label":"Chargé(e) de merchandising","value":134},{"code":"E1101","label":"Community manager","value":125},{"code":"E1103","label":"Chargé(e) des relations publiques","value":179},{"code":"E1107","label":"Chef(fe) de projet événementiel","value":130},{"code":"E1112","label":"Chargé(e) de communication","value":285},{"code":"E1113","label":"Responsable e-commerce","value":301},{"code":"E1124","label":"Social media manager","value":43},{"code":"E1404","label":"Assistant(e) en publicité","value":51},{"code":"E1405","label":"Référenceur(se) web (SEO)","value":23},{"code":"M1426","label":"Chief digital officer","value":37},{"code":"M1430","label":"Chargé(e) d'études commerciales","value":274},{"code":"M1620","label":"Assistant(e) marketing","value":142},{"code":"M1703","label":"Chef(fe) de produit","value":292},{"code":"M1705","label":"Responsable marketing","value":212},{"code":"M1706","label":"Chef(fe) de promotion des ventes","value":91},{"code":"M1711","label":"Directeur(trice) du marketing","value":48},{"code":"M1716","label":"Directeur(trice) marketing digital","value":227},{"code":"M1718","label":"Chargé(e) de marketing digital","value":109},{"code":"M1719","label":"Chargé(e) des relations avec les influenceurs","value":2},{"code":"M1886","label":"Chef(fe) de projet web","value":94}]};
-const STORAGE_KEY='metier-interactif-offres-par-rome-v2';
-const $=id=>document.getElementById(id);
-let rows;
-try{const saved=localStorage.getItem(STORAGE_KEY);rows=saved?JSON.parse(saved):structuredClone(ORIGINAL.rows);if(!Array.isArray(rows))throw Error('invalid')}catch{rows=structuredClone(ORIGINAL.rows)}
-$('source').textContent=`Données réelles du dépôt · extraction du ${ORIGINAL.date} · ${ORIGINAL.total.toLocaleString('fr-FR')} offres actives au total`;
-function persist(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(rows));$('status').textContent='Modifications enregistrées dans ce navigateur.'}catch{$('status').textContent='Stockage local indisponible : tu peux toujours exporter le tableau en CSV.'}}
-function safeValue(x){return String(x??'')}
-function renderTable(){const tbody=$('rows');tbody.replaceChildren();if(!rows.length){const tr=document.createElement('tr'),td=document.createElement('td');td.colSpan=4;td.className='empty';td.textContent='Aucune ligne. Ajoute un métier pour commencer.';tr.append(td);tbody.append(tr);return}
-rows.forEach((row,index)=>{const tr=document.createElement('tr');for(const key of ['code','label','value']){const td=document.createElement('td'),input=document.createElement('input');input.type=key==='value'?'number':'text';input.value=safeValue(row[key]);input.setAttribute('aria-label',key==='code'?'Code ROME':key==='label'?'Métier':'Nombre d’offres');if(key==='value'){input.min='0';input.step='1'}input.addEventListener('input',()=>{rows[index][key]=key==='value'?(input.value===''?'':Math.max(0,Math.floor(Number(input.value)))):input.value;persist();renderChart()});td.append(input);tr.append(td)}const td=document.createElement('td');td.className='col-remove';const button=document.createElement('button');button.className='remove';button.type='button';button.textContent='Supprimer';button.setAttribute('aria-label',`Supprimer ${row.label||row.code||'cette ligne'}`);button.addEventListener('click',()=>{rows.splice(index,1);persist();renderTable();renderChart()});td.append(button);tr.append(td);tbody.append(tr)})}
-function renderChart(){const svg=$('chart');svg.replaceChildren();const NS='http://www.w3.org/2000/svg';const sorted=rows.map((r,i)=>({...r,_i:i,_v:Number(r.value)||0})).sort((a,b)=>b._v-a._v);const W=1100,rowH=29,left=365,right=60,top=18,bottom=42,H=top+sorted.length*rowH+bottom,plotW=W-left-right,max=Math.max(1,...sorted.map(r=>r._v));svg.setAttribute('viewBox',`0 0 ${W} ${Math.max(150,H)}`);svg.setAttribute('height',Math.max(150,H));function el(tag,attrs={},txt){const e=document.createElementNS(NS,tag);for(const [k,v] of Object.entries(attrs))e.setAttribute(k,v);if(txt!==undefined)e.textContent=txt;svg.append(e);return e}const tick=niceStep(max);for(let v=0;v<=max+tick;v+=tick){const x=left+plotW*v/max;el('line',{x1:x,y1:top-3,x2:x,y2:top+sorted.length*rowH,class:'grid'});el('text',{x,y:top+sorted.length*rowH+22,'text-anchor':'middle',class:'axis'},Math.round(v).toLocaleString('fr-FR'))}sorted.forEach((r,i)=>{const y=top+i*rowH, label=`${r.code||'—'} · ${r.label||'Métier non renseigné'}`;let shown=label;if(label.length>48)shown=label.slice(0,45)+'…';el('text',{x:left-12,y:y+17,'text-anchor':'end',class:'name'},shown);const width=Math.max(0,plotW*r._v/max);const bar=el('rect',{x:left,y,width,height:19,rx:3,class:'bar'});const tip=el('title',{},`${label} : ${r._v.toLocaleString('fr-FR')} offre(s)`);bar.append(tip);el('text',{x:left+width+7,y:y+14,class:'count'},r._v.toLocaleString('fr-FR'))});el('text',{x:left+plotW/2,y:H-7,'text-anchor':'middle',class:'axis'},'Nombre d’offres')
-$('chart-summary').textContent=`${rows.length} lignes · ${rows.reduce((s,r)=>s+(Number(r.value)||0),0).toLocaleString('fr-FR')} offres selon le tableau affiché.`}
-function niceStep(max){const rough=max/5,pow=10**Math.floor(Math.log10(rough||1)),unit=rough/pow;return (unit<=1?1:unit<=2?2:unit<=5?5:10)*pow}
-$('add').addEventListener('click',()=>{rows.push({code:'',label:'Nouveau métier',value:0});persist();renderTable();renderChart();const inputs=$('rows').lastElementChild.querySelectorAll('input');inputs[0].focus();inputs[0].select()});
-$('reset').addEventListener('click',()=>{rows=structuredClone(ORIGINAL.rows);localStorage.removeItem(STORAGE_KEY);renderTable();renderChart();$('status').textContent='Données d’origine restaurées.'});
-$('export').addEventListener('click',()=>{const esc=v=>'"'+String(v??'').replaceAll('"','""')+'"';const csv='Code ROME,Métier,Offres\n'+rows.map(r=>[r.code,r.label,r.value].map(esc).join(',')).join('\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'}));a.download='offres_par_metier_modifiees.csv';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)});
-renderTable();renderChart();
-</script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="assets/commun.js?v=5"></script>
+<script src="assets/explorateur.js?v=1"></script>
 </body>
 </html>

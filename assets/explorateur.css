@@ -1,0 +1,117 @@
+:root {
+  --explorer-ink: #172b3c;
+  --explorer-muted: #647587;
+  --explorer-line: #dce5eb;
+  --explorer-paper: #fff;
+  --explorer-bg: #f3f6f8;
+  --explorer-blue: #176b87;
+  --explorer-blue-dark: #10485d;
+  --explorer-teal: #4c9b92;
+  --explorer-amber: #cf8b3c;
+  --explorer-soft: #e8f1f4;
+}
+
+body { color:var(--explorer-ink); background:var(--explorer-bg); }
+.explorer-page { max-width:1460px; padding:26px clamp(14px,3vw,40px) 64px; }
+.explorer-page h1,.explorer-page h2,.explorer-page h3 { color:var(--explorer-ink); }
+.explorer-page h1 { font-size:clamp(2rem,4vw,3.35rem); letter-spacing:-.045em; line-height:1.06; margin:3px 0 12px; }
+.explorer-page h2 { font-size:clamp(1.3rem,2vw,1.75rem); letter-spacing:-.025em; margin:0; }
+.explorer-page h3 { font-size:1.08rem; margin:0; }
+.explorer-page .nav { margin-bottom:22px; }
+.explorer-page .nav a.ici { border-color:var(--explorer-blue); color:var(--explorer-blue-dark); }
+.hero { padding:30px clamp(20px,4vw,48px); border-radius:20px; color:#fff; background:linear-gradient(118deg,#153d52 0%,#176b87 60%,#398d91 100%); box-shadow:0 14px 35px #17364b18; }
+.hero h1 { color:#fff; max-width:900px; }
+.hero-copy { max-width:760px; margin:0; color:#e2eef1; font-size:1.04rem; }
+.hero .eyebrow { color:#bcdde3; }
+.source-line { margin:18px 0 0; color:#e7f1f4; font-size:.9rem; }
+.source-line code { color:inherit; }
+.eyebrow { margin:0 0 5px; color:var(--explorer-blue); font-size:.72rem; text-transform:uppercase; letter-spacing:.12em; font-weight:750; }
+.panel { background:var(--explorer-paper); border:1px solid var(--explorer-line); border-radius:16px; padding:clamp(16px,2vw,24px); box-shadow:0 4px 18px #1e3d5110; }
+.filters-panel { margin-top:18px; }
+.section-heading { display:flex; justify-content:space-between; align-items:end; gap:16px; margin:34px 0 15px; }
+.filters-heading { margin:0 0 16px; align-items:center; }
+.overview-heading { margin-top:34px; }
+.filter-grid { display:grid; grid-template-columns:repeat(4,minmax(150px,1fr)); gap:14px; align-items:start; }
+.field { min-width:0; display:flex; flex-direction:column; gap:7px; color:var(--explorer-ink); font-size:.86rem; font-weight:650; }
+.field select,.field input,.search-field input,.page-size-field select { width:100%; min-height:42px; padding:9px 11px; border:1px solid #c9d6de; border-radius:9px; background:#fff; color:var(--explorer-ink); font:inherit; font-weight:450; }
+.field select:focus,.field input:focus,.search-field input:focus,.page-size-field select:focus,.button:focus-visible,.sort-button:focus-visible { outline:3px solid #8ac5d2; outline-offset:2px; }
+.salary-filter { grid-column:span 2; padding:0; border:0; }
+.salary-filter legend { margin-bottom:7px; font-size:.86rem; font-weight:650; }
+.range-fields { display:grid; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); gap:9px; align-items:center; }
+.check-field { display:flex; align-items:start; gap:8px; margin-top:8px; color:var(--explorer-muted); font-size:.79rem; font-weight:450; }
+.check-field input { margin:3px 0 0; accent-color:var(--explorer-blue); }
+.filter-count { min-height:1.4em; margin:14px 0 0; color:var(--explorer-muted); font-size:.9rem; }
+.button { min-height:40px; padding:8px 13px; border-radius:9px; font:inherit; cursor:pointer; }
+.button-secondary { border:1px solid #c9d6de; color:var(--explorer-ink); background:#fff; }
+.button-secondary:hover:not(:disabled) { border-color:var(--explorer-blue); color:var(--explorer-blue-dark); background:#f2f8fa; }
+.button:disabled { cursor:not-allowed; opacity:.45; }
+.kpi-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:13px; }
+.kpi-card { min-width:0; padding:18px 19px; border:1px solid var(--explorer-line); border-radius:14px; background:#fff; box-shadow:0 4px 18px #1e3d510c; }
+.kpi-label { display:block; color:var(--explorer-muted); font-size:.8rem; font-weight:650; }
+.kpi-card strong { display:block; overflow-wrap:anywhere; margin:10px 0 5px; color:var(--explorer-blue-dark); font-size:clamp(1.35rem,2.5vw,2rem); letter-spacing:-.035em; line-height:1.15; }
+.kpi-note { display:block; color:var(--explorer-muted); font-size:.78rem; line-height:1.45; }
+.visual-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
+.chart-panel { min-width:0; padding:19px; }
+.chart-panel-wide { grid-column:1/-1; }
+.chart-heading { display:flex; justify-content:space-between; align-items:start; gap:12px; min-height:62px; }
+.chart-note { max-width:700px; margin:5px 0 0; color:var(--explorer-muted); font-size:.82rem; line-height:1.45; }
+.chart-stage { position:relative; width:100%; height:305px; margin-top:8px; }
+.chart-stage-jobs { min-width:760px; height:620px; }
+.chart-stage-departments { min-width:570px; height:440px; }
+.chart-scroll { min-width:0; overflow-x:auto; overscroll-behavior-x:contain; }
+.chart-scroll-tall { max-height:690px; overflow:auto; }
+.chart-stage canvas { display:block; }
+.chart-summary { min-height:2.8em; margin:12px 0 0; padding:10px 12px; border-radius:9px; background:#f1f6f7; color:#405667; font-size:.83rem; line-height:1.55; }
+.table-panel { margin-top:34px; }
+.table-heading { align-items:end; margin:0 0 12px; }
+.search-field { width:min(100%,380px); color:var(--explorer-muted); font-size:.78rem; font-weight:650; }
+.search-field span { display:block; margin-bottom:5px; }
+.table-count { margin:0 0 10px; color:var(--explorer-muted); font-size:.86rem; }
+.table-scroll { overflow:auto; border:1px solid var(--explorer-line); border-radius:11px; }
+.offers-table { width:100%; min-width:1000px; border-collapse:collapse; background:#fff; }
+.offers-table th { position:sticky; top:0; z-index:1; padding:0; border-bottom:1px solid var(--explorer-line); background:#f5f8f9; text-align:left; white-space:nowrap; }
+.sort-button { width:100%; min-height:42px; padding:9px 11px; border:0; background:transparent; color:#405667; font:inherit; font-size:.76rem; font-weight:750; text-align:left; cursor:pointer; }
+.sort-button:hover { color:var(--explorer-blue); background:#eaf2f4; }
+.offers-table td { max-width:270px; padding:10px 11px; border-bottom:1px solid #edf1f3; color:#344c5c; font-size:.82rem; vertical-align:top; }
+.offers-table tbody tr:hover { background:#f7fafb; }
+.offers-table td:first-child { min-width:230px; max-width:360px; color:var(--explorer-ink); font-weight:650; }
+.offers-table td:first-child a { color:inherit; }
+.offers-table .table-empty { padding:24px; color:var(--explorer-muted); text-align:center; }
+.missing-value { color:#778895; font-style:italic; font-weight:450; }
+.table-controls { display:flex; justify-content:space-between; align-items:center; gap:14px; margin-top:13px; }
+.page-size-field { display:flex; align-items:center; gap:9px; color:var(--explorer-muted); font-size:.8rem; }
+.page-size-field select { width:auto; min-height:38px; padding:6px 9px; }
+.pagination { display:flex; align-items:center; gap:10px; color:var(--explorer-muted); font-size:.83rem; }
+.pagination .button { min-height:36px; padding:6px 11px; }
+.table-footnote { margin:12px 0 0; color:var(--explorer-muted); font-size:.78rem; }
+.explorer-footer { margin-top:26px; padding-top:18px; border-top:1px solid var(--explorer-line); color:var(--explorer-muted); font-size:.82rem; line-height:1.55; }
+.explorer-footer p { margin:7px 0; }
+.error-panel { margin-top:18px; border-color:#dfaaa3; background:#fff6f4; color:#742b24; }
+.error-panel[hidden] { display:none; }
+.sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+
+@media (max-width:1050px) {
+  .filter-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .kpi-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+@media (max-width:700px) {
+  .explorer-page { padding:14px 12px 42px; }
+  .hero { padding:23px 19px; border-radius:15px; }
+  .visual-grid { grid-template-columns:minmax(0,1fr); }
+  .chart-panel-wide { grid-column:auto; }
+  .chart-stage-jobs { height:640px; }
+  .section-heading { align-items:start; }
+  .table-heading { flex-direction:column; }
+  .search-field { width:100%; }
+}
+@media (max-width:480px) {
+  .filter-grid { grid-template-columns:minmax(0,1fr); }
+  .salary-filter { grid-column:auto; }
+  .kpi-grid { gap:9px; }
+  .kpi-card { padding:13px 12px; }
+  .kpi-card strong { font-size:1.45rem; }
+  .table-controls { align-items:stretch; flex-direction:column; }
+  .pagination { justify-content:space-between; }
+  .explorer-page .nav { gap:1px; }
+  .explorer-page .nav a { padding:5px 8px; font-size:.8rem; }
+}
