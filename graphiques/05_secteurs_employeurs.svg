@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="475" viewBox="0 0 1200 475">
+<rect width="100%" height="100%" fill="#fff"/>
+<style>text{font-family:Arial,Helvetica,sans-serif;fill:#202a35}.title{font-size:25px;font-weight:700}.sub{font-size:15px;fill:#586575}.label{font-size:14px}.value{font-size:13px;font-weight:700}.axis{font-size:12px;fill:#586575}.grid{stroke:#e6eaf0;stroke-width:1}</style>
+<text class="title" x="36" y="38">Secteurs d’activité les plus renseignés</text>
+<text class="sub" x="36" y="64">Top 10 parmi 1 482 offres avec secteur · absent pour 1 699 offres (53.4%)</text>
+<line class="grid" x1="510.0" y1="85" x2="510.0" y2="411"/>
+<text class="axis" text-anchor="middle" x="510.0" y="429">0</text>
+<line class="grid" x1="632.0" y1="85" x2="632.0" y2="411"/>
+<text class="axis" text-anchor="middle" x="632.0" y="429">48</text>
+<line class="grid" x1="754.0" y1="85" x2="754.0" y2="411"/>
+<text class="axis" text-anchor="middle" x="754.0" y="429">96</text>
+<line class="grid" x1="876.0" y1="85" x2="876.0" y2="411"/>
+<text class="axis" text-anchor="middle" x="876.0" y="429">145</text>
+<line class="grid" x1="998.0" y1="85" x2="998.0" y2="411"/>
+<text class="axis" text-anchor="middle" x="998.0" y="429">193</text>
+<line class="grid" x1="1120.0" y1="85" x2="1120.0" y2="411"/>
+<text class="axis" text-anchor="middle" x="1120.0" y="429">241</text>
+<text class="label" text-anchor="end" x="498" y="108">Activités des agences de travail temporaire</text>
+<rect x="510" y="91" width="564.8" height="19" rx="3" fill="#235789"/>
+<text class="value" x="1081.8" y="106">224</text>
+<text class="label" text-anchor="end" x="498" y="140">Activités des agences de placement de main-d&#x27;œuvre</text>
+<rect x="510" y="123" width="345.4" height="19" rx="3" fill="#f18f01"/>
+<text class="value" x="862.4" y="138">137</text>
+<text class="label" text-anchor="end" x="498" y="172">Conseil pour les affaires et autres conseils de gestion</text>
+<rect x="510" y="155" width="184.1" height="19" rx="3" fill="#2e8b57"/>
+<text class="value" x="701.1" y="170">73</text>
+<text class="label" text-anchor="end" x="498" y="204">Conseil en relations publiques et communication</text>
+<rect x="510" y="187" width="143.7" height="19" rx="3" fill="#7b61a8"/>
+<text class="value" x="660.7" y="202">57</text>
+<text class="label" text-anchor="end" x="498" y="236">Activités des sièges sociaux</text>
+<rect x="510" y="219" width="138.7" height="19" rx="3" fill="#d1495b"/>
+<text class="value" x="655.7" y="234">55</text>
+<text class="label" text-anchor="end" x="498" y="268">Formation continue d&#x27;adultes</text>
+<rect x="510" y="251" width="88.3" height="19" rx="3" fill="#168aad"/>
+<text class="value" x="605.3" y="266">35</text>
+<text class="label" text-anchor="end" x="498" y="300">Programmation informatique</text>
+<rect x="510" y="283" width="88.3" height="19" rx="3" fill="#7f5539"/>
+<text class="value" x="605.3" y="298">35</text>
+<text class="label" text-anchor="end" x="498" y="332">&#x27;Commerce de détail de quincaillerie, peintures et verr…</text>
+<rect x="510" y="315" width="73.1" height="19" rx="3" fill="#5b8e7d"/>
+<text class="value" x="590.1" y="330">29</text>
+<text class="label" text-anchor="end" x="498" y="364">Activités des agences de publicité</text>
+<rect x="510" y="347" width="73.1" height="19" rx="3" fill="#a44a3f"/>
+<text class="value" x="590.1" y="362">29</text>
+<text class="label" text-anchor="end" x="498" y="396">Activités des sociétés holding</text>
+<rect x="510" y="379" width="68.1" height="19" rx="3" fill="#577590"/>
+<text class="value" x="585.1" y="394">27</text>
+<text class="axis" x="815.0" y="446" text-anchor="middle">Nombre d’offres</text>
+<text class="sub" x="36" y="461">Lecture limitée aux secteurs renseignés : ne pas extrapoler à l’ensemble des offres.</text>
+</svg>

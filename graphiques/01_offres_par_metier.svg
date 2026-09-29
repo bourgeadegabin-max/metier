@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="768" viewBox="0 0 1200 768">
+<rect width="100%" height="100%" fill="#fff"/>
+<style>text{font-family:Arial,Helvetica,sans-serif;fill:#202a35}.title{font-size:25px;font-weight:700}.sub{font-size:15px;fill:#586575}.label{font-size:14px}.value{font-size:13px;font-weight:700}.axis{font-size:12px;fill:#586575}.grid{stroke:#e6eaf0;stroke-width:1}</style>
+<text class="title" x="36" y="38">Offres actives par métier suivi</text>
+<text class="sub" x="36" y="64">France entière · extraction du 2026-09-29 · 3 181 offres actives</text>
+<line class="grid" x1="500.0" y1="85" x2="500.0" y2="729"/>
+<text class="axis" text-anchor="middle" x="500.0" y="747">0</text>
+<line class="grid" x1="624.0" y1="85" x2="624.0" y2="729"/>
+<text class="axis" text-anchor="middle" x="624.0" y="747">75</text>
+<line class="grid" x1="748.0" y1="85" x2="748.0" y2="729"/>
+<text class="axis" text-anchor="middle" x="748.0" y="747">151</text>
+<line class="grid" x1="872.0" y1="85" x2="872.0" y2="729"/>
+<text class="axis" text-anchor="middle" x="872.0" y="747">226</text>
+<line class="grid" x1="996.0" y1="85" x2="996.0" y2="729"/>
+<text class="axis" text-anchor="middle" x="996.0" y="747">302</text>
+<line class="grid" x1="1120.0" y1="85" x2="1120.0" y2="729"/>
+<text class="axis" text-anchor="middle" x="1120.0" y="747">378</text>
+<text class="label" text-anchor="end" x="488" y="108">D1415 · Chargé(e) de relation client (CRM)</text>
+<rect x="500" y="91" width="574.1" height="19" rx="3" fill="#235789"/>
+<text class="value" x="1081.1" y="106">350</text>
+<text class="label" text-anchor="end" x="488" y="137">E1113 · Responsable e-commerce</text>
+<rect x="500" y="120" width="493.7" height="19" rx="3" fill="#f18f01"/>
+<text class="value" x="1000.7" y="135">301</text>
+<text class="label" text-anchor="end" x="488" y="166">M1703 · Chef(fe) de produit</text>
+<rect x="500" y="149" width="478.9" height="19" rx="3" fill="#2e8b57"/>
+<text class="value" x="985.9" y="164">292</text>
+<text class="label" text-anchor="end" x="488" y="195">E1112 · Chargé(e) de communication</text>
+<rect x="500" y="178" width="467.5" height="19" rx="3" fill="#7b61a8"/>
+<text class="value" x="974.5" y="193">285</text>
+<text class="label" text-anchor="end" x="488" y="224">M1430 · Chargé(e) d&#x27;études commerciales</text>
+<rect x="500" y="207" width="449.4" height="19" rx="3" fill="#d1495b"/>
+<text class="value" x="956.4" y="222">274</text>
+<text class="label" text-anchor="end" x="488" y="253">M1716 · Directeur(trice) marketing digital</text>
+<rect x="500" y="236" width="372.3" height="19" rx="3" fill="#168aad"/>
+<text class="value" x="879.3" y="251">227</text>
+<text class="label" text-anchor="end" x="488" y="282">M1705 · Responsable marketing</text>
+<rect x="500" y="265" width="347.7" height="19" rx="3" fill="#7f5539"/>
+<text class="value" x="854.7" y="280">212</text>
+<text class="label" text-anchor="end" x="488" y="311">E1103 · Chargé(e) des relations publiques</text>
+<rect x="500" y="294" width="293.6" height="19" rx="3" fill="#5b8e7d"/>
+<text class="value" x="800.6" y="309">179</text>
+<text class="label" text-anchor="end" x="488" y="340">M1620 · Assistant(e) marketing</text>
+<rect x="500" y="323" width="232.9" height="19" rx="3" fill="#a44a3f"/>
+<text class="value" x="739.9" y="338">142</text>
+<text class="label" text-anchor="end" x="488" y="369">D1506 · Chargé(e) de merchandising</text>
+<rect x="500" y="352" width="219.8" height="19" rx="3" fill="#577590"/>
+<text class="value" x="726.8" y="367">134</text>
+<text class="label" text-anchor="end" x="488" y="398">E1107 · Chef(fe) de projet événementiel</text>
+<rect x="500" y="381" width="213.2" height="19" rx="3" fill="#bc6c25"/>
+<text class="value" x="720.2" y="396">130</text>
+<text class="label" text-anchor="end" x="488" y="427">E1101 · Community manager</text>
+<rect x="500" y="410" width="205.0" height="19" rx="3" fill="#6c757d"/>
+<text class="value" x="712.0" y="425">125</text>
+<text class="label" text-anchor="end" x="488" y="456">M1718 · Chargé(e) de marketing digital</text>
+<rect x="500" y="439" width="178.8" height="19" rx="3" fill="#235789"/>
+<text class="value" x="685.8" y="454">109</text>
+<text class="label" text-anchor="end" x="488" y="485">M1886 · Chef(fe) de projet web</text>
+<rect x="500" y="468" width="154.2" height="19" rx="3" fill="#f18f01"/>
+<text class="value" x="661.2" y="483">94</text>
+<text class="label" text-anchor="end" x="488" y="514">M1706 · Chef(fe) de promotion des ventes</text>
+<rect x="500" y="497" width="149.3" height="19" rx="3" fill="#2e8b57"/>
+<text class="value" x="656.3" y="512">91</text>
+<text class="label" text-anchor="end" x="488" y="543">E1404 · Assistant(e) en publicité</text>
+<rect x="500" y="526" width="83.7" height="19" rx="3" fill="#7b61a8"/>
+<text class="value" x="590.7" y="541">51</text>
+<text class="label" text-anchor="end" x="488" y="572">M1711 · Directeur(trice) du marketing</text>
+<rect x="500" y="555" width="78.7" height="19" rx="3" fill="#d1495b"/>
+<text class="value" x="585.7" y="570">48</text>
+<text class="label" text-anchor="end" x="488" y="601">E1124 · Social media manager</text>
+<rect x="500" y="584" width="70.5" height="19" rx="3" fill="#168aad"/>
+<text class="value" x="577.5" y="599">43</text>
+<text class="label" text-anchor="end" x="488" y="630">M1426 · Chief digital officer</text>
+<rect x="500" y="613" width="60.7" height="19" rx="3" fill="#7f5539"/>
+<text class="value" x="567.7" y="628">37</text>
+<text class="label" text-anchor="end" x="488" y="659">D1438 · Assistant(e) e-commerce</text>
+<rect x="500" y="642" width="52.5" height="19" rx="3" fill="#5b8e7d"/>
+<text class="value" x="559.5" y="657">32</text>
+<text class="label" text-anchor="end" x="488" y="688">E1405 · Référenceur(se) web (SEO)</text>
+<rect x="500" y="671" width="37.7" height="19" rx="3" fill="#a44a3f"/>
+<text class="value" x="544.7" y="686">23</text>
+<text class="label" text-anchor="end" x="488" y="717">M1719 · Chargé(e) des relations avec les influenceurs</text>
+<rect x="500" y="700" width="3.3" height="19" rx="3" fill="#577590"/>
+<text class="value" x="510.3" y="715">2</text>
+<text class="axis" x="810.0" y="764" text-anchor="middle">Nombre d’offres</text>
+</svg>
