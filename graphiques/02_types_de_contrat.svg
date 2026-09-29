@@ -1,43 +1,29 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="386" viewBox="0 0 1200 386">
-<rect width="100%" height="100%" fill="#fff"/>
-<style>text{font-family:Arial,Helvetica,sans-serif;fill:#202a35}.title{font-size:25px;font-weight:700}.sub{font-size:15px;fill:#586575}.label{font-size:14px}.value{font-size:13px;font-weight:700}.axis{font-size:12px;fill:#586575}.grid{stroke:#e6eaf0;stroke-width:1}</style>
-<text class="title" x="36" y="38">Offres actives par type de contrat</text>
-<text class="sub" x="36" y="64">Codes France Travail · 3 181 offres · extraction du 2026-09-29</text>
-<line class="grid" x1="435.0" y1="85" x2="435.0" y2="347"/>
-<text class="axis" text-anchor="middle" x="435.0" y="365">0</text>
-<line class="grid" x1="572.0" y1="85" x2="572.0" y2="347"/>
-<text class="axis" text-anchor="middle" x="572.0" y="365">355</text>
-<line class="grid" x1="709.0" y1="85" x2="709.0" y2="347"/>
-<text class="axis" text-anchor="middle" x="709.0" y="365">710</text>
-<line class="grid" x1="846.0" y1="85" x2="846.0" y2="347"/>
-<text class="axis" text-anchor="middle" x="846.0" y="365">1 065</text>
-<line class="grid" x1="983.0" y1="85" x2="983.0" y2="347"/>
-<text class="axis" text-anchor="middle" x="983.0" y="365">1 420</text>
-<line class="grid" x1="1120.0" y1="85" x2="1120.0" y2="347"/>
-<text class="axis" text-anchor="middle" x="1120.0" y="365">1 775</text>
-<text class="label" text-anchor="end" x="423" y="108">CDI</text>
-<rect x="435" y="91" width="634.3" height="19" rx="3" fill="#235789"/>
-<text class="value" x="1076.3" y="106">1 644</text>
-<text class="label" text-anchor="end" x="423" y="140">CDD</text>
-<rect x="435" y="123" width="370.8" height="19" rx="3" fill="#f18f01"/>
-<text class="value" x="812.8" y="138">961</text>
-<text class="label" text-anchor="end" x="423" y="172">Intérim (MIS)</text>
-<rect x="435" y="155" width="104.6" height="19" rx="3" fill="#2e8b57"/>
-<text class="value" x="546.6" y="170">271</text>
-<text class="label" text-anchor="end" x="423" y="204">Franchise (FRA)</text>
-<rect x="435" y="187" width="58.6" height="19" rx="3" fill="#7b61a8"/>
-<text class="value" x="500.6" y="202">152</text>
-<text class="label" text-anchor="end" x="423" y="236">Profession libérale (LIB)</text>
-<rect x="435" y="219" width="37.4" height="19" rx="3" fill="#d1495b"/>
-<text class="value" x="479.4" y="234">97</text>
-<text class="label" text-anchor="end" x="423" y="268">Profession commerciale (CCE)</text>
-<rect x="435" y="251" width="18.5" height="19" rx="3" fill="#168aad"/>
-<text class="value" x="460.5" y="266">48</text>
-<text class="label" text-anchor="end" x="423" y="300">Saisonnier (SAI)</text>
-<rect x="435" y="283" width="2.3" height="19" rx="3" fill="#7f5539"/>
-<text class="value" x="444.3" y="298">6</text>
-<text class="label" text-anchor="end" x="423" y="332">CDI de chantier (DDI)</text>
-<rect x="435" y="315" width="0.8" height="19" rx="3" fill="#5b8e7d"/>
-<text class="value" x="442.8" y="330">2</text>
-<text class="axis" x="777.5" y="382" text-anchor="middle">Nombre d’offres</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="318" viewBox="0 0 1000 318">
+<rect width="1000" height="100%" fill="#fff"/><style>text{font-family:Arial,sans-serif;fill:#17324d}.muted{fill:#536575}</style>
+<text x="40" y="48" font-size="26" font-weight="bold">Type de contrat annoncé</text>
+<text x="40" y="77" font-size="15" class="muted">Familles exclusives selon la règle du site · effectifs et part du corpus</text>
+<text x="338" y="126.0" font-size="13" text-anchor="end">CDI</text>
+<rect x="350" y="113.0" width="450" height="18" rx="3" fill="#d9e8ee"/>
+<rect x="350" y="113.0" width="450.0" height="18" rx="3" fill="#176b87"/>
+<text x="812" y="127.0" font-size="12">1 636 (51.4 %)</text>
+<text x="338" y="154.0" font-size="13" text-anchor="end">CDD</text>
+<rect x="350" y="141.0" width="450" height="18" rx="3" fill="#d9e8ee"/>
+<rect x="350" y="141.0" width="89.4" height="18" rx="3" fill="#176b87"/>
+<text x="812" y="155.0" font-size="12">325 (10.2 %)</text>
+<text x="338" y="182.0" font-size="13" text-anchor="end">Alternance</text>
+<rect x="350" y="169.0" width="450" height="18" rx="3" fill="#d9e8ee"/>
+<rect x="350" y="169.0" width="177.1" height="18" rx="3" fill="#176b87"/>
+<text x="812" y="183.0" font-size="12">644 (20.2 %)</text>
+<text x="338" y="210.0" font-size="13" text-anchor="end">Intérim</text>
+<rect x="350" y="197.0" width="450" height="18" rx="3" fill="#d9e8ee"/>
+<rect x="350" y="197.0" width="74.5" height="18" rx="3" fill="#176b87"/>
+<text x="812" y="211.0" font-size="12">271 (8.5 %)</text>
+<text x="338" y="238.0" font-size="13" text-anchor="end">Indépendant</text>
+<rect x="350" y="225.0" width="450" height="18" rx="3" fill="#d9e8ee"/>
+<rect x="350" y="225.0" width="81.7" height="18" rx="3" fill="#176b87"/>
+<text x="812" y="239.0" font-size="12">297 (9.3 %)</text>
+<text x="338" y="266.0" font-size="13" text-anchor="end">Autre</text>
+<rect x="350" y="253.0" width="450" height="18" rx="3" fill="#d9e8ee"/>
+<rect x="350" y="253.0" width="2.2" height="18" rx="3" fill="#176b87"/>
+<text x="812" y="267.0" font-size="12">8 (0.3 %)</text>
+<text x="40" y="300" font-size="12" class="muted">Base : 3 181 offres.  offres</text></svg>

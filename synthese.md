@@ -1,68 +1,95 @@
-# Première exploration descriptive des offres
+# Première exploration descriptive — offres des métiers du marketing
 
-**Source :** `data/resume.json`, extraction du **2026-09-29**. Le périmètre comprend **3 181 offres actives** sur les 23 codes ROME suivis. Les graphiques sont des SVG vectoriels.
+**Source et date :** `data/resume.json`, extraction du **29 septembre 2026**. Le corpus comprend **3 181 offres actives** pour 23 métiers ROME suivis (22 avec au moins une offre). Les graphiques sont des SVG générés par `scripts/generer_td1.py`.
 
-**Préparation :** sources brutes conservées ; aucune offre supprimée du périmètre résumé. Les valeurs manquantes sont comptées séparément. Le salaire est analysé uniquement lorsque `smin` est un montant annuel numérique. Les offres actives, et non les versions brutes, servent d’unité de compte.
+**Unité statistique :** une offre active. Le nombre de postes peut être supérieur au nombre d’offres. Les données brutes ne sont ni supprimées ni imputées. Le dictionnaire des variables et les définitions se trouvent dans [`dictionnaire_variables.md`](dictionnaire_variables.md).
 
-## Graphiques
+## Cinq graphiques principaux
 
-### Offres actives par métier
+### 1. Offres actives par métier
 
 ![Offres actives par métier](graphiques/01_offres_par_metier.svg)
 
-**Chiffre clé :** le métier le plus représenté est **D1415 — Chargé(e) de relation client (CRM) : 350 offres**. 22 des 23 codes suivis ont au moins une offre.
+**Chiffre clé :** D1415, Chargé(e) de relation client (CRM), représente **350 offres, soit 11,0 %** du corpus. Les trois premiers métiers en représentent 943 (29,6 %).
 
-Cela décrit les volumes dans le périmètre des métiers ROME sélectionnés, pas l’ensemble des emplois du marché.
+Cette distribution décrit uniquement les métiers ROME suivis par le projet, pas l’ensemble des emplois du marché.
 
-### Offres par type de contrat
+### 2. Familles de contrat
 
-![Offres par type de contrat](graphiques/02_types_de_contrat.svg)
+![Familles de contrat](graphiques/02_types_de_contrat.svg)
 
-**Chiffre clé :** **CDI** est le contrat le plus fréquent, avec **1 644 offres (51,7 %)**.
+**Chiffre clé :** le CDI est la famille la plus fréquente avec **1 636 offres (51,4 %)** ; l’alternance en représente **644 (20,2 %)**.
 
-La répartition résume le type de contrat annoncé dans les offres actives ; elle ne mesure ni leur durée réelle ni le nombre de postes pourvus.
+Les familles sont exclusives selon la règle du site : l’alternance est comptée à part même si le code de contrat source est CDI ou CDD. Ce graphique ne doit donc pas être lu comme un décompte brut des codes API.
 
-### Minima salariaux annuels
+### 3. Minima salariaux annualisés
 
 ![Minima salariaux annuels](graphiques/03_distribution_salaires.svg)
 
-**Chiffre clé :** la médiane des minima annualisés est de **27 600 € brut/an**, sur 891 offres ; la tranche la plus fréquente est **20–30 k€** (362 offres).
+**Chiffre clé :** la médiane de `smin` est de **27 600 € brut/an**, parmi **891 offres (28,0 %)** ayant une borne annuelle numérique exploitable ; Q1 vaut 22 416 € et Q3 38 000 €.
 
-La variable représentée est le minimum salarial affiché, pas un salaire moyen. 2 290 offres (72,0 %) n’ont pas de minimum numérique annuel exploitable et ne sont pas imputées.
+L’histogramme présente le minimum salarial transformé, par tranches de 10 000 €. Il ne représente ni le salaire moyen ni une rémunération effectivement versée. Les valeurs extrêmes sont conservées et doivent être contrôlées dans le libellé source avant toute correction.
 
-### Offres par département
+### 4. Expérience demandée
+
+![Expérience demandée](graphiques/07_experience.svg)
+
+**Chiffre clé :** **1 485 offres (46,7 %)** sont classées « débutant accepté » selon la règle du projet (`exp_exige = D` ou `exp_ans = 0`).
+
+Les durées converties sont regroupées en classes ordonnées. Les mentions sans durée convertible restent visibles à part ; cette variable est en partie recodée et son résultat dépend de la règle utilisée.
+
+### 5. Ancienneté des annonces
+
+![Ancienneté des annonces](graphiques/08_fraicheur_offres.svg)
+
+**Chiffre clé :** l’âge médian est de **17 jours** à la date d’extraction ; **396 annonces** ont au moins 60 jours.
+
+L’âge est calculé entre la date de création (`date`) et le 29 septembre 2026. Les classes visibles sont 0–6, 7–29, 30–59 et 60 jours ou plus ; la dernière barre donne directement les 396 annonces d’au moins 60 jours. Une annonce ancienne dans cette extraction n’est pas nécessairement encore ouverte : ce chiffre décrit l’ancienneté des annonces observées, pas leur disponibilité vérifiée.
+
+## Graphiques complémentaires
+
+Ces vues sont utiles pour explorer les données, mais leur couverture ou leur portée demande une précaution supplémentaire.
+
+### Localisation par département
 
 ![Offres par département](graphiques/04_offres_par_departement.svg)
 
-**Chiffre clé :** le département le plus représenté parmi ceux renseignés est **75 : 367 offres**.
+Le département le plus représenté est **75 avec 367 offres**. Le département est manquant pour **103 offres (3,2 %)**. La carte du site combine des positions d’offre et des positions estimées à la commune ou au département : la précision doit être lue avec `prec`.
 
-Le graphique montre les dix premiers départements plus 103 offres sans département. Certaines coordonnées sont estimées au centre d’une commune ou d’un département.
-
-### Secteurs renseignés
+### Secteurs d’activité renseignés
 
 ![Secteurs renseignés](graphiques/05_secteurs_employeurs.svg)
 
-**Chiffre clé :** parmi les 1 482 secteurs renseignés, le plus fréquent est **Activités des agences de travail temporaire : 224 offres**.
-
-Le secteur manque pour 1 699 offres (53,4 %). La figure décrit les seuls cas renseignés et ne doit pas être extrapolée sans réserve.
+Parmi les **1 482 secteurs connus (46,6 % du corpus)**, les agences de travail temporaire sont les plus fréquentes (**224 offres**). Cette répartition ne peut pas être extrapolée aux annonces sans secteur renseigné.
 
 ### Nature du contrat
 
 ![Nature du contrat](graphiques/06_nature_contrat.svg)
 
-**Chiffre clé :** la catégorie la plus fréquente est **Salarié : 2 236 offres**.
+La catégorie « salarié » concerne **2 236 offres**. Cette variable décrit une nature d’activité et n’est pas équivalente au code de contrat ni aux familles exclusives du graphique principal.
 
-Cette catégorie distingue notamment apprentissage et professionnalisation du salariat et des formes non salariées.
+## Données manquantes et qualité
 
-## Lecture transversale
+| Champ | Manquants / vides | Part du corpus |
+|---|---:|---:|
+| Employeur | 880 | 27,7 % |
+| Département et coordonnées | 103 | 3,2 % |
+| Libellé de salaire | 2 248 | 70,7 % |
+| Minimum/maximum salarial numérique | 2 290 | 72,0 % |
+| Durée d’expérience numérique | 229 | 7,2 % |
+| Qualification | 1 878 | 59,0 % |
+| Formation | 2 925 | 92,0 % |
+| Secteur | 1 699 | 53,4 % |
+| Temps plein/partiel | 2 417 | 76,0 % |
+| Outils / compétences | liste vide pour 1 540 / 2 433 offres | 48,4 % / 76,5 % |
 
-Les trois codes ROME les plus représentés sont D1415 (350), E1113 (301), M1703 (292) : **943 offres, soit 29,6 % du corpus**. Les CDI représentent **1 644 offres (51,7 %)** et les CDD **961 (30,2 %)**.
+Il y a **42 offres avec un libellé salarial mais sans minimum numérique annualisé** : ce sont des échecs ou cas non pris en charge par le parseur, à revoir à partir des libellés avant d’étendre les calculs. Une liste `outils` vide signifie qu’aucun mot de la grille de détection n’a été trouvé ; une liste `competences` vide signifie que la source n’en fournit pas dans le résumé.
 
-Le secteur est renseigné pour 1 482 offres (46,6 %), le salaire annualisé pour 891 (28,0 %), et l’employeur pour 2 301 (72,3 %). Toute comparaison sur ces variables doit donner le dénominateur valide.
+L’examen des quartiles repère 28 minima et 30 maxima salariaux au-delà de la borne supérieure usuelle à 1,5 écart interquartile. Ce seuil signale des observations à vérifier, pas des erreurs automatiques : aucune n’est supprimée. Les combinaisons répétées d’intitulé, employeur et lieu ne sont pas dédupliquées, car des annonces distinctes peuvent partager ces champs. Les contrôles n’ont pas trouvé d’identifiants répétés dans le résumé ni de minimum supérieur au maximum.
 
-## Notes de méthode
+## Méthode et limites
 
-- Une ligne du résumé correspond à une offre active à la date d’extraction ; le nombre de postes (`postes`) peut différer du nombre d’offres.
-- Les montants sont présentés tels que transformés par le script du dépôt ; la médiane porte sur les minima (`smin`), pas sur les maxima ni sur un salaire représentatif par intervalle.
-- Les libellés longs du graphique sectoriel sont abrégés à l’affichage ; les catégories n’ont pas été regroupées.
-- La source est l’API France Travail : ce corpus ne recense pas toutes les offres du marché du travail.
+- Les catégories nominales sont décrites par des effectifs et parts ; les durées et formations sont ordonnées lorsque leur recodage le permet. Les salaires sont décrits par médiane et quartiles, plus un histogramme.
+- Les pourcentages des graphiques principaux utilisent les 3 181 offres comme dénominateur. Pour le secteur, le dénominateur est celui des seuls secteurs connus ; les effectifs manquants sont donnés explicitement.
+- `smin` et `smax` sont extraits et annualisés par `scripts/resumer.py` à partir d’un texte, donc restent des variables dérivées. `niveau`, `nature`, `formation`, `exp_ans`, `outils` et les familles contractuelles impliquent également des règles de recodage ou de détection.
+- Les données viennent d’offres publiées sur France Travail et de la sélection ROME du dépôt ; elles ne représentent pas exhaustivement le marché du travail. La série temporelle ne comporte que huit extractions.

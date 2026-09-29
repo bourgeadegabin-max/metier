@@ -1,34 +1,25 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="290" viewBox="0 0 1200 290">
-<rect width="100%" height="100%" fill="#fff"/>
-<style>text{font-family:Arial,Helvetica,sans-serif;fill:#202a35}.title{font-size:25px;font-weight:700}.sub{font-size:15px;fill:#586575}.label{font-size:14px}.value{font-size:13px;font-weight:700}.axis{font-size:12px;fill:#586575}.grid{stroke:#e6eaf0;stroke-width:1}</style>
-<text class="title" x="36" y="38">Nature du contrat</text>
-<text class="sub" x="36" y="64">Variable dérivée du libellé France Travail · 3 181 offres actives · 2026-09-29</text>
-<line class="grid" x1="425.0" y1="85" x2="425.0" y2="251"/>
-<text class="axis" text-anchor="middle" x="425.0" y="269">0</text>
-<line class="grid" x1="564.0" y1="85" x2="564.0" y2="251"/>
-<text class="axis" text-anchor="middle" x="564.0" y="269">482</text>
-<line class="grid" x1="703.0" y1="85" x2="703.0" y2="251"/>
-<text class="axis" text-anchor="middle" x="703.0" y="269">965</text>
-<line class="grid" x1="842.0" y1="85" x2="842.0" y2="251"/>
-<text class="axis" text-anchor="middle" x="842.0" y="269">1 448</text>
-<line class="grid" x1="981.0" y1="85" x2="981.0" y2="251"/>
-<text class="axis" text-anchor="middle" x="981.0" y="269">1 931</text>
-<line class="grid" x1="1120.0" y1="85" x2="1120.0" y2="251"/>
-<text class="axis" text-anchor="middle" x="1120.0" y="269">2 414</text>
-<text class="label" text-anchor="end" x="413" y="108">Salarié</text>
-<rect x="425" y="91" width="643.5" height="19" rx="3" fill="#235789"/>
-<text class="value" x="1075.5" y="106">2 236</text>
-<text class="label" text-anchor="end" x="413" y="140">Apprentissage</text>
-<rect x="425" y="123" width="130.7" height="19" rx="3" fill="#f18f01"/>
-<text class="value" x="562.7" y="138">454</text>
-<text class="label" text-anchor="end" x="413" y="172">Non salarié</text>
-<rect x="425" y="155" width="85.5" height="19" rx="3" fill="#2e8b57"/>
-<text class="value" x="517.5" y="170">297</text>
-<text class="label" text-anchor="end" x="413" y="204">Professionnalisation</text>
-<rect x="425" y="187" width="54.7" height="19" rx="3" fill="#7b61a8"/>
-<text class="value" x="486.7" y="202">190</text>
-<text class="label" text-anchor="end" x="413" y="236">Autre / non classé</text>
-<rect x="425" y="219" width="1.2" height="19" rx="3" fill="#d1495b"/>
-<text class="value" x="433.2" y="234">4</text>
-<text class="axis" x="772.5" y="286" text-anchor="middle">Nombre d’offres</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="290" viewBox="0 0 1000 290">
+<rect width="1000" height="100%" fill="#fff"/><style>text{font-family:Arial,sans-serif;fill:#17324d}.muted{fill:#536575}</style>
+<text x="40" y="48" font-size="26" font-weight="bold">Nature du contrat</text>
+<text x="40" y="77" font-size="15" class="muted">Variable distincte du type de contrat · effectifs et part du corpus</text>
+<text x="338" y="126.0" font-size="13" text-anchor="end">salarie</text>
+<rect x="350" y="113.0" width="450" height="18" rx="3" fill="#d9e8ee"/>
+<rect x="350" y="113.0" width="450.0" height="18" rx="3" fill="#176b87"/>
+<text x="812" y="127.0" font-size="12">2 236 (70.3 %)</text>
+<text x="338" y="154.0" font-size="13" text-anchor="end">apprentissage</text>
+<rect x="350" y="141.0" width="450" height="18" rx="3" fill="#d9e8ee"/>
+<rect x="350" y="141.0" width="91.4" height="18" rx="3" fill="#176b87"/>
+<text x="812" y="155.0" font-size="12">454 (14.3 %)</text>
+<text x="338" y="182.0" font-size="13" text-anchor="end">non_salarie</text>
+<rect x="350" y="169.0" width="450" height="18" rx="3" fill="#d9e8ee"/>
+<rect x="350" y="169.0" width="59.8" height="18" rx="3" fill="#176b87"/>
+<text x="812" y="183.0" font-size="12">297 (9.3 %)</text>
+<text x="338" y="210.0" font-size="13" text-anchor="end">professionnalisation</text>
+<rect x="350" y="197.0" width="450" height="18" rx="3" fill="#d9e8ee"/>
+<rect x="350" y="197.0" width="38.2" height="18" rx="3" fill="#176b87"/>
+<text x="812" y="211.0" font-size="12">190 (6.0 %)</text>
+<text x="338" y="238.0" font-size="13" text-anchor="end">autre</text>
+<rect x="350" y="225.0" width="450" height="18" rx="3" fill="#d9e8ee"/>
+<rect x="350" y="225.0" width="0.8" height="18" rx="3" fill="#176b87"/>
+<text x="812" y="239.0" font-size="12">4 (0.1 %)</text>
+<text x="40" y="272" font-size="12" class="muted">Base : 3 181 offres.  offres</text></svg>

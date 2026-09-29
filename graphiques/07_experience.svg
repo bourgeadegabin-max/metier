@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="318" viewBox="0 0 1000 318">
+<rect width="1000" height="100%" fill="#fff"/><style>text{font-family:Arial,sans-serif;fill:#17324d}.muted{fill:#536575}</style>
+<text x="40" y="48" font-size="26" font-weight="bold">Expérience demandée</text>
+<text x="40" y="77" font-size="15" class="muted">Durées recodées par tranches ; les mentions non convertibles restent visibles</text>
+<text x="338" y="126.0" font-size="13" text-anchor="end">Débutant accepté</text>
+<rect x="350" y="113.0" width="450" height="18" rx="3" fill="#d9e8ee"/>
+<rect x="350" y="113.0" width="450.0" height="18" rx="3" fill="#176b87"/>
+<text x="812" y="127.0" font-size="12">1 485 (46.7 %)</text>
+<text x="338" y="154.0" font-size="13" text-anchor="end">Moins d’un an</text>
+<rect x="350" y="141.0" width="450" height="18" rx="3" fill="#d9e8ee"/>
+<rect x="350" y="141.0" width="16.7" height="18" rx="3" fill="#176b87"/>
+<text x="812" y="155.0" font-size="12">55 (1.7 %)</text>
+<text x="338" y="182.0" font-size="13" text-anchor="end">1 à 2 ans</text>
+<rect x="350" y="169.0" width="450" height="18" rx="3" fill="#d9e8ee"/>
+<rect x="350" y="169.0" width="227.9" height="18" rx="3" fill="#176b87"/>
+<text x="812" y="183.0" font-size="12">752 (23.6 %)</text>
+<text x="338" y="210.0" font-size="13" text-anchor="end">3 à 4 ans</text>
+<rect x="350" y="197.0" width="450" height="18" rx="3" fill="#d9e8ee"/>
+<rect x="350" y="197.0" width="81.2" height="18" rx="3" fill="#176b87"/>
+<text x="812" y="211.0" font-size="12">268 (8.4 %)</text>
+<text x="338" y="238.0" font-size="13" text-anchor="end">5 ans et plus</text>
+<rect x="350" y="225.0" width="450" height="18" rx="3" fill="#d9e8ee"/>
+<rect x="350" y="225.0" width="118.8" height="18" rx="3" fill="#176b87"/>
+<text x="812" y="239.0" font-size="12">392 (12.3 %)</text>
+<text x="338" y="266.0" font-size="13" text-anchor="end">Durée non précisée / non convertible</text>
+<rect x="350" y="253.0" width="450" height="18" rx="3" fill="#d9e8ee"/>
+<rect x="350" y="253.0" width="69.4" height="18" rx="3" fill="#176b87"/>
+<text x="812" y="267.0" font-size="12">229 (7.2 %)</text>
+<text x="40" y="300" font-size="12" class="muted">Base : 3 181 offres.  offres</text></svg>

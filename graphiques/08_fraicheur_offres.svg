@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="282" viewBox="0 0 1000 282">
+<rect width="1000" height="100%" fill="#fff"/><style>text{font-family:Arial,sans-serif;fill:#17324d}.muted{fill:#536575}</style>
+<text x="40" y="48" font-size="26" font-weight="bold">Ancienneté des annonces</text>
+<text x="40" y="77" font-size="15" class="muted">Calculée à la date d’extraction 2026-09-29 · 3 181 dates exploitables</text>
+<text x="350" y="106" font-size="14" font-weight="bold">Âge médian : 17 jours</text>
+<text x="338" y="146.0" font-size="13" text-anchor="end">0–6 jours</text>
+<rect x="350" y="133.0" width="450" height="18" rx="3" fill="#d9e8ee"/>
+<rect x="350" y="133.0" width="210.4" height="18" rx="3" fill="#176b87"/>
+<text x="812" y="147.0" font-size="12">776 (24.4 %)</text>
+<text x="338" y="174.0" font-size="13" text-anchor="end">7–29 jours</text>
+<rect x="350" y="161.0" width="450" height="18" rx="3" fill="#d9e8ee"/>
+<rect x="350" y="161.0" width="450.0" height="18" rx="3" fill="#176b87"/>
+<text x="812" y="175.0" font-size="12">1 660 (52.2 %)</text>
+<text x="338" y="202.0" font-size="13" text-anchor="end">30–59 jours</text>
+<rect x="350" y="189.0" width="450" height="18" rx="3" fill="#d9e8ee"/>
+<rect x="350" y="189.0" width="94.6" height="18" rx="3" fill="#176b87"/>
+<text x="812" y="203.0" font-size="12">349 (11.0 %)</text>
+<text x="338" y="230.0" font-size="13" text-anchor="end">60 jours et plus</text>
+<rect x="350" y="217.0" width="450" height="18" rx="3" fill="#d9e8ee"/>
+<rect x="350" y="217.0" width="107.3" height="18" rx="3" fill="#176b87"/>
+<text x="812" y="231.0" font-size="12">396 (12.4 %)</text>
+<text x="40" y="264" font-size="12" class="muted">Base : 3 181 offres.  offres</text></svg>
