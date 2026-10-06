@@ -27,6 +27,11 @@
   </header>
   <div class="panel error-panel" id="error-panel" role="alert" hidden></div>
 
+  <section class="panel source-panel" aria-labelledby="source-heading">
+    <div class="source-picker-copy"><p class="eyebrow">Deux sources de données</p><h2 id="source-heading">Choisir le jeu d'offres</h2><p>Le snapshot du TD1 reste figé au 29 septembre 2026. Le mode France Travail utilise le dernier fichier publié automatiquement par GitHub Actions.</p></div>
+    <label class="field source-picker"><span>Source affichée</span><select id="data-mode"><option value="historique">Snapshot TD1</option><option value="live">France Travail — offres en direct</option></select></label>
+  </section>
+
   <section class="panel filters-panel" aria-labelledby="filters-heading">
     <div class="section-heading filters-heading">
       <div><p class="eyebrow">Affiner la sélection</p><h2 id="filters-heading">Filtres</h2></div>

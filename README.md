@@ -1,22 +1,23 @@
 # Le marché de mon métier — les métiers du marketing
 
-### 👉 **[Voir le site : vincentfavarin.github.io/metier](https://vincentfavarin.github.io/metier/)**
+### 👉 **[Voir le site : bourgeadegabin-max.github.io/metier](https://bourgeadegabin-max.github.io/metier/)**
 
-Le site est mis à jour chaque matin par une Action GitHub : elle interroge
-l'API France Travail, enregistre les offres du jour et publie les chiffres.
+Les pages principales utilisent le snapshot historique du TD1. L'explorateur propose
+aussi les offres France Travail issues d'un fichier actualisé par GitHub Actions.
 
 | | |
 |---|---|
-| [Accueil](https://vincentfavarin.github.io/metier/) | les filtres, les chiffres, la carte de France |
-| [Ce que ça paie](https://vincentfavarin.github.io/metier/salaires.html) | fourchettes par niveau, métier, contrat, territoire |
-| [Ce qu'on vous demande](https://vincentfavarin.github.io/metier/exigences.html) | expérience, diplôme, outils, compétences |
-| [Qui recrute](https://vincentfavarin.github.io/metier/recruteurs.html) | entreprises, secteurs, employeurs ouverts aux débutants |
-| [Le marché bouge](https://vincentfavarin.github.io/metier/mouvement.html) | les extractions successives, la fraîcheur des annonces |
+| [Accueil](https://bourgeadegabin-max.github.io/metier/) | les filtres, les chiffres, la carte de France |
+| [Explorer les offres](https://bourgeadegabin-max.github.io/metier/interactif.html) | snapshot TD1 ou offres France Travail actualisées |
+| [Ce que ça paie](https://bourgeadegabin-max.github.io/metier/salaires.html) | fourchettes par niveau, métier, contrat, territoire |
+| [Ce qu'on vous demande](https://bourgeadegabin-max.github.io/metier/exigences.html) | expérience, diplôme, outils, compétences |
+| [Qui recrute](https://bourgeadegabin-max.github.io/metier/recruteurs.html) | entreprises, secteurs, employeurs ouverts aux débutants |
+| [Le marché bouge](https://bourgeadegabin-max.github.io/metier/mouvement.html) | les extractions successives, la fraîcheur des annonces |
 
 Dossier de travail pour la séance « Écouter le marché de votre métier »
 (M2 MOD, IAE Clermont Auvergne). Dépôt de démonstration : il montre ce que
 l'on attend d'un dossier `avenir`, étape par étape, et la chaîne complète
-API → données → Action planifiée → page GitHub Pages.
+API → GitHub Actions → JSON France Travail → GitHub Pages, sans écraser le snapshot TD1.
 
 ## Le métier, tel que le marché le nomme
 
@@ -65,12 +66,9 @@ Au 22/09/2026 : 3 362 offres actives.
 ## La chaîne
 
 ```
-API France Travail  →  scripts/extraire.py  →  data/brut/<mois>/<ROME>.jsonl   chaque version d'annonce, une seule fois
-                                            →  data/actives/<date>.csv         les offres actives du jour (rome, id)
-                                            →  data/serie.csv                  par jour et par métier : total, nouvelles, modifiées
-                       scripts/resumer.py   →  data/resume.json                ce que les pages affichent (+ data/geo/, cache des positions)
-                       index.html + 4 pages →  https://vincentfavarin.github.io/metier/
-                       .github/workflows/veille.yml : GitHub relance tout ça chaque matin à 7 h
+Snapshot TD1 : data/resume.json ───────────────────────────────────────────────────┐
+                                                                                   ├→ explorateur GitHub Pages
+API France Travail → GitHub Actions → data/offres-france-travail.json ─────────────┘
 ```
 
 - `scripts/extraire.py` — une requête `codeROME` par métier (token OAuth,
@@ -83,9 +81,18 @@ API France Travail  →  scripts/extraire.py  →  data/brut/<mois>/<ROME>.jsonl
   (libellé texte → min/max annuels bruts), outils cités dans les descriptions
   (grille à adapter), position (lat/lon de l'API, sinon centre de la commune
   via geo.api.gouv.fr, sinon ville principale du département).
-- Cinq pages HTML statiques, un chantier par page, toutes servies telles quelles.
-  Chacune charge `data/resume.json` et recalcule ses graphiques Chart.js dans le
-  navigateur selon la sélection ; net mensuel estimé = brut × 0,78 / 12.
+- `scripts/generer_offres_france_travail.py` reprend les métiers et recodages du
+  projet pour générer le jeu courant, sans exécuter le pipeline historique.
+- `data/resume.json` reste le snapshot du TD1. `data/offres-france-travail.json`
+  est le fichier public distinct utilisé par le mode France Travail.
+- `.github/workflows/veille.yml` s'exécute toutes les six heures (UTC), ou
+  manuellement depuis Actions. Une étape de contrôle obtient un token puis appelle
+  la recherche v2 ; la génération et le commit ne démarrent qu'après son succès.
+  Le commit n'ajoute que le JSON France Travail et le workflow n'a pas de déclencheur
+  `push`, donc son commit ne crée pas de boucle d'exécution.
+- Les cinq pages de présentation chargent `data/resume.json`. L'explorateur
+  interactif peut aussi charger le JSON France Travail, sans changer les
+  définitions de ses graphiques et filtres.
   - `index.html` — les filtres, les chiffres-clés, la carte Leaflet (survol =
     l'offre, clic = l'annonce sur France Travail), les départements, les
     contrats, et les liens vers les quatre autres pages.
@@ -123,13 +130,21 @@ copy .env.example .env        (puis remplir avec ses identifiants francetravail.
 ## Faire tourner sans soi (GitHub)
 
 1. Dépôt **public** (GitHub Pages gratuit ne fonctionne que sur un dépôt public).
-2. Settings → Secrets and variables → Actions : `FT_CLIENT_ID` et `FT_CLIENT_SECRET`.
+2. Settings → Secrets and variables → Actions : créer `FT_CLIENT_ID` et
+   `FT_CLIENT_SECRET` comme secrets du dépôt.
 3. Settings → Pages → Source « Deploy from a branch », branche `main`, dossier `/ (root)`.
-4. Actions → veille → Run workflow : le premier commit du bot arrive dans `data/`.
+4. Actions → Actualiser les offres France Travail → Run workflow : la première
+   collecte publie `data/offres-france-travail.json`.
+
+Dans **Settings → Actions → General → Workflow permissions**, autoriser les
+permissions de lecture et d'écriture du contenu pour le `GITHUB_TOKEN`. Le workflow
+ne met toutefois en staging et ne committe que `data/offres-france-travail.json`.
 
 ## Règles
 
-- Les identifiants sont dans `.env` (local) ou dans les secrets du dépôt
-  (GitHub) : jamais dans un fichier versionné.
+- Les identifiants du workflow sont exclusivement dans les secrets GitHub Actions ;
+  ils ne sont jamais publiés dans le dépôt, le site ou les logs.
+- `scripts/resumer.py` écrit `data/resume.json` lorsqu'il est lancé manuellement ;
+  ne pas l'exécuter si le snapshot historique doit rester inchangé.
 - Un canal, une requête, une date : chaque chiffre du site les affiche.
 - Pas de scraping de LinkedIn, APEC ou Indeed (interdit par leurs CGU).

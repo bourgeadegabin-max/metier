@@ -18,6 +18,7 @@
   ];
   const MISSING_DEPARTMENT = "__missing_department__";
   const DAY_MS = 86400000;
+  const LIVE_DATA_URL = "data/offres-france-travail.json";
   const $ = id => document.getElementById(id);
   const normalize = value => String(value ?? "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase("fr-FR");
   const missing = value => value == null || value === "";
@@ -162,6 +163,8 @@
 
   function addOptions(data) {
     const rome = $("filter-rome");
+    [[rome, "Tous les métiers"], [$("filter-family"), "Toutes les familles"], [$("filter-department"), "Tous les départements"], [$("filter-experience"), "Toutes les catégories"]]
+      .forEach(([select, label]) => select.replaceChildren(new Option(label, "")));
     [...(data.metiers || [])].sort((a, b) => a.libelle.localeCompare(b.libelle, "fr"))
       .forEach(job => addOption(rome, job.code, `${job.libelle} (${job.code})`));
 
@@ -254,6 +257,7 @@
   }
 
   let dataSet = null;
+  let selectedMode = "historique";
   let filteredOffers = [];
   let page = 1;
   let pageSize = 25;
@@ -474,6 +478,10 @@
   }
 
   function bindControls() {
+    $("data-mode").addEventListener("change", event => {
+      const mode = event.target.value;
+      loadSource(mode);
+    });
     ["filter-rome", "filter-family", "filter-department", "filter-experience"].forEach(id => {
       $(id).addEventListener("change", () => { page = 1; refresh(); });
     });
@@ -505,33 +513,59 @@
     }));
   }
 
-  function initialize() {
+  function loadSource(mode) {
     const errorPanel = $("error-panel");
     const sourceLine = $("source-line");
-    const reportError = error => {
-      errorPanel.hidden = false;
-      errorPanel.textContent = `Impossible de charger l'explorateur : ${error.message}. Lancez le site via un serveur local (par exemple python3 -m http.server) et vérifiez le chargement de data/resume.json et de Chart.js.`;
-      sourceLine.textContent = "Les données n'ont pas pu être chargées.";
-    };
-    if (!window.Chart) { reportError(new Error("Chart.js n'a pas pu être chargé. Vérifiez la connexion au CDN.")); return; }
-    if (typeof familleContrat !== "function" || typeof trancheExp !== "function") { reportError(new Error("Les règles de recodage partagées sont indisponibles.")); return; }
-
-    fetch("data/resume.json", { cache: "no-cache" })
+    const url = mode === "live" ? LIVE_DATA_URL : "data/resume.json";
+    sourceLine.textContent = mode === "live" ? "Chargement des dernières offres France Travail publiées…" : "Chargement du snapshot historique…";
+    errorPanel.hidden = true;
+    $("data-mode").disabled = true;
+    fetch(url, { cache: mode === "live" ? "no-store" : "no-cache" })
       .then(response => {
         if (!response.ok) throw new Error(`chargement HTTP ${response.status}`);
         return response.json();
       })
       .then(data => {
-        if (!data || !Array.isArray(data.offres) || !Array.isArray(data.metiers) || !data.date) throw new Error("format inattendu dans data/resume.json");
+        if (!data || !Array.isArray(data.offres) || !Array.isArray(data.metiers) || !data.date) throw new Error("format inattendu dans la réponse");
+        if (mode === "live" && (data.mode !== "live" || !data.generatedAt)) throw new Error("le fichier France Travail n'a pas le format attendu");
         dataSet = data;
+        selectedMode = mode;
+        metierLabels.clear();
         data.metiers.forEach(job => metierLabels.set(job.code, job.libelle));
         addOptions(data);
-        bootCharts();
-        bindControls();
-        sourceLine.textContent = `${formatNumber(data.offres.length)} offres actives · extraction du ${formatDate(data.date)} · source : data/resume.json`;
+        page = 1;
         refresh();
+        sourceLine.textContent = mode === "live"
+          ? `${formatNumber(data.offres.length)} offres France Travail · dernière actualisation : ${new Intl.DateTimeFormat("fr-FR", { dateStyle: "long", timeStyle: "short", timeZone: "Europe/Paris" }).format(new Date(data.generatedAt))}${data.limites?.length ? ` · plafond de pagination atteint pour ${data.limites.join(", ")}` : ""}`
+          : `${formatNumber(data.offres.length)} offres actives · extraction du ${formatDate(data.date)} · source : data/resume.json`;
       })
-      .catch(reportError);
+      .catch(error => {
+        errorPanel.hidden = false;
+        errorPanel.textContent = `Impossible de charger la source ${mode === "live" ? "France Travail" : "historique"} : ${error.message}. Le snapshot historique reste disponible.`;
+        $("data-mode").value = selectedMode;
+        sourceLine.textContent = selectedMode === "historique" ? "Snapshot historique du 29 septembre 2026." : "Fichier France Travail précédemment chargé.";
+      })
+      .finally(() => { $("data-mode").disabled = false; });
+  }
+
+  function initialize() {
+    const errorPanel = $("error-panel");
+    const sourceLine = $("source-line");
+    if (!window.Chart) {
+      errorPanel.hidden = false;
+      errorPanel.textContent = "Chart.js n'a pas pu être chargé. Vérifiez la connexion au CDN.";
+      sourceLine.textContent = "Les graphiques ne sont pas disponibles.";
+      return;
+    }
+    if (typeof familleContrat !== "function" || typeof trancheExp !== "function") {
+      errorPanel.hidden = false;
+      errorPanel.textContent = "Les règles de recodage partagées sont indisponibles.";
+      sourceLine.textContent = "Les données ne peuvent pas être interprétées.";
+      return;
+    }
+    bootCharts();
+    bindControls();
+    loadSource("historique");
   }
 
   // Interface exportée pour les contrôles de calcul sans lancer le rendu DOM.
