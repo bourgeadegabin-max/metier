@@ -420,10 +420,16 @@
     host.append(makeTable(["Niveau inféré à partir de l’intitulé", "N", "Moyenne de smin", "Écart-type"], rows));
   }
 
-  function render(offers, familyOf) {
+  function render(offers, familyOf, context = {}) {
     const results = compute(offers, familyOf);
     const base = document.getElementById("analysis-base");
-    if (base) base.textContent = `${offers.length.toLocaleString("fr-FR")} offres après filtres globaux ; chaque analyse peut utiliser un sous-échantillon distinct selon ses variables disponibles.`;
+    if (base) {
+      const total = Number.isFinite(context.snapshotTotal) ? context.snapshotTotal : offers.length;
+      const modeNote = context.displayedMode === "live"
+        ? " La source affichée est France Travail, mais les analyses CM2 restent calculées sur le snapshot historique."
+        : " Source analytique : snapshot historique TD1 (data/resume.json).";
+      base.textContent = `${offers.length.toLocaleString("fr-FR")} offres du snapshot après filtres (sur ${total.toLocaleString("fr-FR")}) ; chaque analyse peut utiliser un sous-échantillon distinct selon ses variables disponibles.${modeNote}`;
+    }
     renderChi(results.chiSquare); renderCorrelation(results.correlation); renderRegression(results.correlation); renderAnova(results.anova);
     return results;
   }

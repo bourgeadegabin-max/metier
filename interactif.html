@@ -99,7 +99,7 @@
 
   <section class="analyses-section" aria-labelledby="analysis-heading">
     <div class="section-heading"><div><p class="eyebrow">Aller au-delà des répartitions</p><h2 id="analysis-heading">Analyses statistiques</h2>
-      <p class="analysis-intro">Les calculs suivent le jeu de données et les filtres sélectionnés. p &lt; 0,05 conduit à rejeter H0 au seuil de 5 %, mais une p-value ne mesure pas l’importance pratique du résultat. Une association ou une pente ne démontre pas une causalité.</p>
+      <p class="analysis-intro">Les analyses CM2 utilisent toujours le snapshot historique TD1 (<code>data/resume.json</code>) ; les filtres globaux peuvent en restreindre le sous-échantillon. Ce choix conserve la référence reproductible, y compris lorsque le mode France Travail est affiché. p &lt; 0,05 conduit à rejeter H0 au seuil de 5 %, mais une p-value ne mesure pas l’importance pratique du résultat. Une association ou une pente ne démontre pas une causalité.</p>
     </div></div>
     <p class="analysis-base" id="analysis-base" aria-live="polite">Calcul des analyses…</p>
     <div class="analysis-grid">
@@ -156,7 +156,7 @@
   </section>
 
   <footer class="explorer-footer">
-    <p>Source : <code>data/resume.json</code>. Les graphiques et indicateurs sont recalculés dans le navigateur à partir de la sélection. Les salaires sont des bornes annualisées extraites d'un libellé, pas des rémunérations observées.</p>
+    <p>Sources : <code>data/resume.json</code> (snapshot TD1) et <code>data/offres-france-travail.json</code> (données France Travail publiées par GitHub Actions). Les indicateurs de l’explorateur utilisent la source sélectionnée ; les analyses CM2 restent rattachées au snapshot TD1. Les salaires sont des bornes annualisées extraites d'un libellé, pas des rémunérations observées.</p>
     <p><a href="synthese.md">Consulter la synthèse TD1</a> · <a href="dictionnaire_variables.md">Dictionnaire des variables</a> · <a href="index.html">Retour au site métier</a></p>
   </footer>
 </main>

@@ -1,4 +1,4 @@
-/* Explorateur statique : les effectifs sont calculés depuis data/resume.json. */
+/* Explorateur statique : les indicateurs sont calculés depuis la source sélectionnée. */
 (function () {
   "use strict";
 
@@ -257,6 +257,7 @@
   }
 
   let dataSet = null;
+  let snapshotDataSet = null;
   let selectedMode = "historique";
   let filteredOffers = [];
   let page = 1;
@@ -474,8 +475,12 @@
       : `${formatNumber(count)} offre${count === 1 ? "" : "s"} sélectionnée${count === 1 ? "" : "s"} sur ${formatNumber(dataSet.offres.length)}. Les filtres s'appliquent aux indicateurs, graphiques et au tableau.${missingNote}`;
     renderKpis(filteredOffers, views);
     renderCharts(filteredOffers, views);
-    if (window.AnalysesStatistiques && typeof window.AnalysesStatistiques.render === "function") {
-      window.AnalysesStatistiques.render(filteredOffers, familyKey);
+    if (window.AnalysesStatistiques && typeof window.AnalysesStatistiques.render === "function" && snapshotDataSet) {
+      const snapshotAnalysisOffers = filterOffers(snapshotDataSet.offres, filters);
+      window.AnalysesStatistiques.render(snapshotAnalysisOffers, familyKey, {
+        displayedMode: selectedMode,
+        snapshotTotal: snapshotDataSet.offres.length,
+      });
     }
     renderTable();
   }
@@ -532,6 +537,7 @@
         if (!data || !Array.isArray(data.offres) || !Array.isArray(data.metiers) || !data.date) throw new Error("format inattendu dans la réponse");
         if (mode === "live" && (data.mode !== "live" || !data.generatedAt)) throw new Error("le fichier France Travail n'a pas le format attendu");
         dataSet = data;
+        if (mode === "historique") snapshotDataSet = data;
         selectedMode = mode;
         metierLabels.clear();
         data.metiers.forEach(job => metierLabels.set(job.code, job.libelle));
