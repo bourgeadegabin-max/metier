@@ -474,6 +474,9 @@
       : `${formatNumber(count)} offre${count === 1 ? "" : "s"} sélectionnée${count === 1 ? "" : "s"} sur ${formatNumber(dataSet.offres.length)}. Les filtres s'appliquent aux indicateurs, graphiques et au tableau.${missingNote}`;
     renderKpis(filteredOffers, views);
     renderCharts(filteredOffers, views);
+    if (window.AnalysesStatistiques && typeof window.AnalysesStatistiques.render === "function") {
+      window.AnalysesStatistiques.render(filteredOffers, familyKey);
+    }
     renderTable();
   }
 

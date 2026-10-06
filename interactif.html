@@ -6,7 +6,7 @@
   <meta name="description" content="Explorateur interactif des offres d'emploi du projet métiers du marketing.">
   <title>Explorer les offres — Le marché de mon métier</title>
   <link rel="stylesheet" href="assets/commun.css?v=4">
-  <link rel="stylesheet" href="assets/explorateur.css?v=1">
+  <link rel="stylesheet" href="assets/explorateur.css?v=2">
 </head>
 <body>
 <main class="explorer-page">
@@ -97,6 +97,36 @@
     </div>
   </section>
 
+  <section class="analyses-section" aria-labelledby="analysis-heading">
+    <div class="section-heading"><div><p class="eyebrow">Aller au-delà des répartitions</p><h2 id="analysis-heading">Analyses statistiques</h2>
+      <p class="analysis-intro">Les calculs suivent le jeu de données et les filtres sélectionnés. p &lt; 0,05 conduit à rejeter H0 au seuil de 5 %, mais une p-value ne mesure pas l’importance pratique du résultat. Une association ou une pente ne démontre pas une causalité.</p>
+    </div></div>
+    <p class="analysis-base" id="analysis-base" aria-live="polite">Calcul des analyses…</p>
+    <div class="analysis-grid">
+      <article class="panel analysis-card" aria-labelledby="chi-title">
+        <p class="eyebrow">Association entre deux variables catégorielles</p><h3 id="chi-title">Famille de contrat × mention du terme « télétravail »</h3>
+        <dl class="analysis-facts" id="chi-facts"></dl><div id="chi-table" class="analysis-table-wrap"></div>
+        <p class="analysis-note">Limite de mesure : `teletravail` indique uniquement la présence du terme « télétravail » dans l’intitulé ou la description enregistrée. L’analyse ne mesure pas une autorisation réelle de télétravailler. Si des effectifs théoriques sont faibles, la p-value est estimée par simulation conditionnelle des marges (Monte-Carlo).</p>
+      </article>
+      <article class="panel analysis-card" aria-labelledby="corr-title">
+        <p class="eyebrow">Lien entre deux mesures numériques</p><h3 id="corr-title">Expérience demandée × minimum salarial annualisé (smin)</h3>
+        <dl class="analysis-facts" id="corr-facts"></dl><div class="analysis-plot"><canvas id="chart-correlation" role="img" aria-label="Nuage de points entre expérience demandée et minimum salarial annualisé"></canvas></div>
+        <p class="analysis-note">`smin` est la borne basse annualisée extraite du libellé, pas une rémunération observée. Le recodage source conserve les montants annualisés entre 4 000 et 250 000 € ; aucune valeur n’est ensuite plafonnée ou supprimée. Les extrêmes détectés par la règle 1,5 IQR restent inclus. Corrélation ≠ causalité.</p>
+      </article>
+      <article class="panel analysis-card" aria-labelledby="reg-title">
+        <p class="eyebrow">Modèle linéaire simple</p><h3 id="reg-title">Expérience → minimum salarial annualisé (smin)</h3>
+        <dl class="analysis-facts" id="reg-facts"></dl><div class="analysis-plot"><canvas id="chart-regression" role="img" aria-label="Nuage de points et droite de régression entre expérience demandée et minimum salarial annualisé smin"></canvas></div>
+        <p class="analysis-note">La pente décrit une association moyenne entre l’expérience demandée et le minimum salarial annualisé (smin). L’erreur-type HC3 tient compte d’une variance résiduelle potentiellement inégale ; les montants ont déjà été filtrés par la règle source (4 000–250 000 €). Cette association ne démontre pas de causalité.</p>
+      </article>
+      <article class="panel analysis-card" aria-labelledby="anova-title">
+        <p class="eyebrow">Comparaison de plusieurs moyennes</p><h3 id="anova-title">Niveau inféré à partir de l’intitulé × smin</h3>
+        <dl class="analysis-facts" id="anova-facts"></dl><div id="anova-table" class="analysis-table-wrap"></div>
+        <p class="analysis-note">`niveau` est un niveau inféré à partir de l’intitulé (assistant, chargé, responsable, directeur, autre), pas une variable hiérarchique officielle. Le test de Levene est centré sur la médiane ; les post-hoc suivent le test global et leur correction de Holm. η² est une taille d’effet descriptive calculée à partir de la décomposition classique des variances. Welch traite l’hétérogénéité des variances, pas les dépendances entre annonces ni toute asymétrie des salaires.</p>
+      </article>
+    </div>
+    <p class="analysis-footnote">Les lignes ayant une valeur manquante pour les variables d’un calcul sont exclues uniquement de ce calcul ; elles restent dans les autres indicateurs et dans le tableau. Détails des bases et exclusions indiqués dans chaque fiche.</p>
+  </section>
+
   <section class="panel table-panel" aria-labelledby="offers-heading">
     <div class="section-heading table-heading">
       <div><p class="eyebrow">Consulter les annonces</p><h2 id="offers-heading">Tableau des offres</h2></div>
@@ -132,6 +162,7 @@
 </main>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <script src="assets/commun.js?v=5"></script>
-<script src="assets/explorateur.js?v=1"></script>
+<script src="assets/analyses.js?v=1"></script>
+<script src="assets/explorateur.js?v=2"></script>
 </body>
 </html>
